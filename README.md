@@ -17,4 +17,4 @@
 - REST API consumption
 
 ## Developed by
-[@itslislisaram](https://github.com/itslisaram)
+[@itslisaram](https://github.com/itslisaram)
