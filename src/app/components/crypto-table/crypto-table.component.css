@@ -1,34 +1,57 @@
 .crypto-table-container {
   padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Header con título + botón */
+.crypto-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.crypto-table-header h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1e2a38;
+  margin-bottom: 0.5rem;
+}
+
+/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  font-size: 0.95rem;
 }
 
 th, td {
-  padding: 0.75rem;
+  padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 th {
-  background-color: #f5f5f5;
+  background-color: #f4f6fa;
+  font-weight: 600;
   color: #333;
 }
 
 .positive {
-  color: green;
-  font-weight: bold;
+  color: #2e7d32;
+  font-weight: 600;
 }
 
 .negative {
-  color: red;
-  font-weight: bold;
+  color: #d32f2f;
+  font-weight: 600;
 }
 
+/* Moneda + icono */
 .coin-name {
   display: flex;
   align-items: center;
@@ -42,20 +65,25 @@ th {
 }
 
 .star {
-  margin-left: 8px;
-  cursor: pointer;
+  margin-left: auto;
   font-size: 1.1rem;
+  cursor: pointer;
 }
 
+/* Botón de favoritos */
 .toggle-btn {
-  background-color: #eee;
-  border: 1px solid #ccc;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  border-radius: 4px;
+  background-color: #00bfa5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
 
 .toggle-btn:hover {
-  background-color: #ddd;
+  background-color: #009e86;
 }

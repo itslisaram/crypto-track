@@ -21,15 +21,56 @@ export class CoinDetailComponent implements OnInit, OnChanges {
 
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: { display: true }
+      legend: {
+        display: true,
+        labels: {
+          color: '#333',
+          font: {
+            size: 14
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => `$${context.parsed.y.toFixed(2)}`
+        }
+      }
     },
     scales: {
       x: {
         ticks: {
+          color: '#555',
           maxRotation: 0,
-          minRotation: 0
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          display: false
         }
+      },
+      y: {
+        ticks: {
+          color: '#555',
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          color: '#e0e0e0'
+        }
+      }
+    },
+    elements: {
+      line: {
+        tension: 0.4,
+        borderWidth: 3
+      },
+      point: {
+        radius: 3,
+        hitRadius: 10
       }
     }
   };
@@ -64,17 +105,19 @@ export class CoinDetailComponent implements OnInit, OnChanges {
           {
             data: priceData,
             label: `${this.coinId.charAt(0).toUpperCase() + this.coinId.slice(1)} (last 7 days)`,
-            borderColor: '#42a5f5',
-            backgroundColor: 'rgba(66,165,245,0.3)',
+            borderColor: '#00bfa5',
+            backgroundColor: 'rgba(0, 191, 165, 0.2)',
             fill: true,
-            tension: 0.3
+            tension: 0.4,
+            pointBackgroundColor: '#00bfa5',
+            pointBorderColor: '#fff'
           }
         ]
       };
     });
   }
+
   getTitle(): string {
-    const name = this.coinId.charAt(0).toUpperCase() + this.coinId.slice(1);
-    return `${name} - 7 Day Price Chart`;
-  }  
+    return `${this.coinId.charAt(0).toUpperCase()}${this.coinId.slice(1)} - 7 Day Price Chart`;
+  }
 }

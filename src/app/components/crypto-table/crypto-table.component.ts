@@ -63,9 +63,9 @@ export class CryptoTableComponent implements OnInit {
   }
 
   get filteredCryptos(): any[] {
-    if (!this.showOnlyFavorites) {
-      return this.cryptos;
-    }
-    return this.cryptos.filter(coin => this.isFavorite(coin.id));
-  }
+    if (!this.cryptos) return [];
+    return this.showOnlyFavorites
+      ? this.cryptos.filter(coin => this.isFavorite(coin.id))
+      : this.cryptos;
+  }  
 }

@@ -1,5 +1,29 @@
-h2 {
+:host {
+  display: block;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Título */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.chart-header h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1e2a38;
+}
+
+/* Contenedor del canvas */
+.chart-wrapper {
+  position: relative;
+  height: 400px;
 }

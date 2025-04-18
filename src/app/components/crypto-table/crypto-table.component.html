@@ -1,11 +1,12 @@
 <div class="crypto-table-container">
-  <h2>Cryptocurrency Prices</h2>
+  <div class="crypto-table-header">
+    <h2>📈 Cryptocurrency Prices</h2>
+    <button class="toggle-btn" (click)="toggleView()">
+      {{ showOnlyFavorites ? '⭐ Show All' : '⭐ Show Only Favorites' }}
+    </button>
+  </div>
 
-  <button class="toggle-btn" (click)="toggleView()">
-    {{ showOnlyFavorites ? 'Show All' : 'Show Only Favorites' }}
-  </button>
-
-  <table>
+  <table *ngIf="filteredCryptos.length > 0; else noCryptos">
     <thead>
       <tr>
         <th>Name</th>
@@ -31,4 +32,10 @@
       </tr>
     </tbody>
   </table>
+
+  <ng-template #noCryptos>
+    <p style="text-align: center; margin-top: 1rem;">
+      No cryptocurrencies to show.
+    </p>
+  </ng-template>
 </div>

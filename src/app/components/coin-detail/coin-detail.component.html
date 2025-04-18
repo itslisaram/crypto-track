@@ -1,8 +1,11 @@
-<div class="chart-container">
-    <h2>{{ getTitle() }}</h2>
-    <canvas baseChart
-            [data]="lineChartData"
-            [options]="lineChartOptions"
-            chartType="line">
-    </canvas>
-  </div>  
+<div class="chart-header">
+        <h2>📊 {{ getTitle() }}</h2>
+      </div>
+      
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          chartType="line">
+        </canvas>
+      </div>      

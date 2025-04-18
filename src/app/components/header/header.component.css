@@ -5,12 +5,16 @@
   padding: 1rem 2rem;
   background-color: #1e2a38;
   color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo span {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  color: #00bfa5;
 }
 
 .nav-actions {
@@ -21,7 +25,7 @@
 
 .welcome {
   font-size: 1rem;
-  font-weight: 500;
+  color: #ffffff;
 }
 
 button {
@@ -29,9 +33,10 @@ button {
   border: none;
   padding: 0.5rem 1rem;
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
