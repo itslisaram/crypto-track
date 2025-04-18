@@ -1,6 +1,10 @@
 <div class="crypto-table-container">
   <h2>Cryptocurrency Prices</h2>
 
+  <button class="toggle-btn" (click)="toggleView()">
+    {{ showOnlyFavorites ? 'Show All' : 'Show Only Favorites' }}
+  </button>
+
   <table>
     <thead>
       <tr>
@@ -11,17 +15,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let coin of cryptos" (click)="selectCoin(coin.id)" style="cursor: pointer;">
+      <tr *ngFor="let coin of filteredCryptos" (click)="selectCoin(coin.id)" style="cursor: pointer;">
         <td class="coin-name">
           <img [src]="coin.image" [alt]="coin.name + ' logo'" />
           {{ coin.name }}
+          <span (click)="toggleFavorite(coin.id); $event.stopPropagation()" class="star">
+            {{ isFavorite(coin.id) ? '⭐' : '☆' }}
+          </span>
         </td>
         <td>{{ coin.symbol | uppercase }}</td>
         <td>${{ coin.current_price }}</td>
         <td [ngClass]="{ 'positive': coin.price_change_percentage_24h >= 0, 'negative': coin.price_change_percentage_24h < 0 }">
           {{ coin.price_change_percentage_24h | number:'1.2-2' }}%
         </td>
-      </tr>      
+      </tr>
     </tbody>
   </table>
 </div>
