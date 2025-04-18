@@ -14,4 +14,9 @@ export class CryptoService {
   getTopCryptos(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}${this.params}`);
   }
+
+  getCoinMarketChart(coinId: string, days: number = 7): Observable<any> {
+    const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`;
+    return this.http.get<any>(url);
+  }  
 }
