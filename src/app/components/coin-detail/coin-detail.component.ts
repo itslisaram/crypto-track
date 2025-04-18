@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
-import { ChartOptions, ChartData } from 'chart.js';
+import { ChartData, ChartOptions } from 'chart.js';
 import { CryptoService } from '../../services/crypto.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { CryptoService } from '../../services/crypto.service';
   templateUrl: './coin-detail.component.html',
   styleUrls: ['./coin-detail.component.css']
 })
-export class CoinDetailComponent implements OnInit {
+export class CoinDetailComponent implements OnInit, OnChanges {
+  @Input() coinId: string = 'bitcoin';
+
   public lineChartData: ChartData<'line'> = {
     labels: [],
     datasets: []
@@ -20,9 +22,7 @@ export class CoinDetailComponent implements OnInit {
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
-      legend: {
-        display: true
-      }
+      legend: { display: true }
     },
     scales: {
       x: {
@@ -37,9 +37,19 @@ export class CoinDetailComponent implements OnInit {
   constructor(private cryptoService: CryptoService) {}
 
   ngOnInit(): void {
-    this.cryptoService.getCoinMarketChart('bitcoin', 7).subscribe((data: any) => {
+    this.loadChartData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['coinId'] && !changes['coinId'].firstChange) {
+      this.loadChartData();
+    }
+  }
+
+  loadChartData(): void {
+    this.cryptoService.getCoinMarketChart(this.coinId, 7).subscribe((data: any) => {
       const prices = data.prices;
-      const filtered = prices.filter((_: any, index: number) => index % 24 === 0);
+      const filtered = prices.filter((_: any, i: number) => i % 24 === 0);
 
       const labels = filtered.map((entry: any) => {
         const date = new Date(entry[0]);
@@ -53,7 +63,7 @@ export class CoinDetailComponent implements OnInit {
         datasets: [
           {
             data: priceData,
-            label: 'Bitcoin (last 7 days)',
+            label: `${this.coinId.charAt(0).toUpperCase() + this.coinId.slice(1)} (last 7 days)`,
             borderColor: '#42a5f5',
             backgroundColor: 'rgba(66,165,245,0.3)',
             fill: true,
@@ -63,4 +73,8 @@ export class CoinDetailComponent implements OnInit {
       };
     });
   }
+  getTitle(): string {
+    const name = this.coinId.charAt(0).toUpperCase() + this.coinId.slice(1);
+    return `${name} - 7 Day Price Chart`;
+  }  
 }

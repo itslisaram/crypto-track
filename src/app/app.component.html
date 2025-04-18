@@ -1,7 +1,6 @@
 <app-header></app-header>
 
 <main>
-  <p>Welcome to CryptoTrack 👋</p>
-  <app-crypto-table></app-crypto-table>
-  <app-coin-detail></app-coin-detail> <!-- solo temporal -->
+  <app-crypto-table (coinSelected)="onCoinSelected($event)"></app-crypto-table>
+  <app-coin-detail [coinId]="selectedCoinId"></app-coin-detail>
 </main>

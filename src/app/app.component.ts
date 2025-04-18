@@ -12,5 +12,9 @@ import { CoinDetailComponent } from './components/coin-detail/coin-detail.compon
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'crypto-track-app';
+  selectedCoinId: string = 'bitcoin';
+
+  onCoinSelected(id: string): void {
+    this.selectedCoinId = id;
+  }
 }
