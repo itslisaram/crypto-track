@@ -12,7 +12,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let coin of cryptos">
-        <td>{{ coin.name }}</td>
+        <td class="coin-name">
+          <img [src]="coin.image" [alt]="coin.name + ' logo'" />
+          {{ coin.name }}
+        </td>        
         <td>{{ coin.symbol | uppercase }}</td>
         <td>${{ coin.current_price }}</td>
         <td [ngClass]="{ 'positive': coin.price_change_percentage_24h >= 0, 'negative': coin.price_change_percentage_24h < 0 }">
