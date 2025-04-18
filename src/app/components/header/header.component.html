@@ -3,10 +3,12 @@
     <span>📊 CryptoTrack</span>
   </div>
 
-  <div class="nav-actions">
-    <button *ngIf="auth.isLoggedIn(); else login" (click)="auth.logout()">Logout</button>
-    <ng-template #login>
-      <button disabled>Login</button>
-    </ng-template>
+  <div class="nav-actions" *ngIf="auth.isLoggedIn(); else loginBtn">
+    <span class="welcome">Welcome back, {{ auth.user }} 👋</span>
+    <button (click)="auth.logout()">Logout</button>
   </div>
+
+  <ng-template #loginBtn>
+    <button disabled>Login</button>
+  </ng-template>
 </header>

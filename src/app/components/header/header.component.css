@@ -1,29 +1,39 @@
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #1e2a38;
-    color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo span {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .login-btn {
-    background-color: #00bfa5;
-    border: none;
-    padding: 0.5rem 1rem;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .login-btn:hover {
-    background-color: #009e86;
-  }  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1e2a38;
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+button {
+  background-color: #00bfa5;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #009e86;
+}
